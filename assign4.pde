@@ -398,7 +398,9 @@ void draw() {
     for(int i=0; i<area; i++){
       image(soldier, soldierX[i], soldierY[i]);
       soldierX[i] += soldierSpeed;
-      soldierX[i] %= SOIL_COL_COUNT*SOIL_SIZE + SOIL_SIZE;
+      if(soldierX[i] > width + SOIL_SIZE){
+        soldierX[i] = 0 - SOIL_SIZE;
+      }
       
       if(playerX+SOIL_SIZE > soldierX[i] && playerX < soldierX[i]+SOIL_SIZE &&
       playerY+SOIL_SIZE > soldierY[i] && playerY < soldierY[i]+SOIL_SIZE){
